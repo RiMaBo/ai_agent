@@ -3,6 +3,7 @@ import sys
 
 from dotenv import load_dotenv
 from google import genai
+from google.genai import types
 
 
 def main():
@@ -15,9 +16,13 @@ def main():
         print(f"Usage: python {sys.argv[0]} <input prompt>")
         sys.exit(1)
 
-    prompt = sys.argv[1]
-    response = client.models.generate_content(model="gemini-2.0-flash-001", contents=prompt)
+    user_prompt = sys.argv[1]
+    messages = [
+        types.Content(role="user", parts=[types.Part(text=user_prompt)]),
+    ]
+    response = client.models.generate_content(model="gemini-2.0-flash-001", contents=messages)
 
+    print("Response:")
     print(response.text)
     print("Prompt tokens: " + str(response.usage_metadata.prompt_token_count))
     print("Response tokens: " + str(response.usage_metadata.candidates_token_count))

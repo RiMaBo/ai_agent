@@ -1,6 +1,7 @@
 from functions.get_files_info import get_files_info
 from functions.get_file_content import get_file_content
 from functions.write_file import write_file
+from functions.run_python import run_python_file
 
 
 def tests():
@@ -20,6 +21,7 @@ def tests():
     # print(get_files_info("calculator", "../"))
     # print("")
 
+
     # print("Result for 'calculator/lorem.txt' file:")
     # print(get_file_content("calculator", "lorem.txt"))
     # print("")
@@ -36,16 +38,33 @@ def tests():
     # print(get_file_content("calculator", "/bin/cat"))
     # print("")
 
-    print("Result for writing 'calculator/lorem.txt' file:")
-    print(write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum"))
+
+    # print("Result for writing 'calculator/lorem.txt' file:")
+    # print(write_file("calculator", "lorem.txt", "wait, this isn't lorem ipsum"))
+    # print("")
+
+    # print("Result for writing 'calculator/pkg/morelorem.txt' file:")
+    # print(write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet"))
+    # print("")
+
+    # print("Result for writing '/tmp/temp.txt' file:")
+    # print(write_file("calculator", "/tmp/temp.txt", "this should not be allowed"))
+    # print("")
+
+    print("Result for running Python file 'calculator/main.py':")
+    print(run_python_file("calculator", "main.py"))
     print("")
 
-    print("Result for writing 'calculator/pkg/morelorem.txt' file:")
-    print(write_file("calculator", "pkg/morelorem.txt", "lorem ipsum dolor sit amet"))
+    print("Result for running Python file 'calculator/tests.py':")
+    print(run_python_file("calculator", "tests.py"))
     print("")
 
-    print("Result for writing '/tmp/temp.txt' file:")
-    print(write_file("calculator", "/tmp/temp.txt", "this should not be allowed"))
+    print("Result for running Python file '../main.py':")
+    print(run_python_file("calculator", "../main.py"))
+    print("")
+
+    print("Result for running Python file 'calculator/nonexistent.py':")
+    print(run_python_file("calculator", "nonexistent.py"))
     print("")
 
 
